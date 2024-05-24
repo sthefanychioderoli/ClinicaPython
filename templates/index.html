@@ -6,6 +6,10 @@
     <title>Agendamento</title>
 </head>
 <body>
-    
+    {% if not login %}
+    <a href="cadastro"><button>Cadastrar-se</button></a>
+    {% else %}
+    <p>Perfil</p>    
+    {% endif %}
 </body>
 </html>
