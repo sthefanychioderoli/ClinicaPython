@@ -2,11 +2,19 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-login = []
-
+login = [
+        {'nome_animal':''},
+        {'especie':''},
+        {'raca':''},
+        {'codigo':''},
+        {'peso':''},
+        {'nome_tutor':''},
+        {'telefone':''}
+ ]
+num = 0
 @app.route('/')
 def index():
-    return render_template('index.html', login=login)
+    return render_template('index.html', login=login, num=num)
 
 @app.route('/cadastro')
 def cadastro():
@@ -21,7 +29,7 @@ def cadastrar():
         peso = request.form['peso']
         nome_tutor = request.form['nome-tutor']
         telefone = request.form['telefone']
-        codigo = len(login)
+        num += 1
         login.append([nome_animal, especie, raca, peso, codigo, nome_tutor, telefone])
     return redirect('/')
 
